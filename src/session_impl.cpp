@@ -2821,9 +2821,9 @@ namespace {
 		// directly.
 		// This path is only for accepting incoming TCP sockets. The udp_socket
 		// class also restricts incoming packets based on proxy settings.
-		if (m_settings.get_int(settings_pack::proxy_type) != settings_pack::none
-			&& m_settings.get_bool(settings_pack::proxy_peer_connections))
-			return;
+		// if (m_settings.get_int(settings_pack::proxy_type) != settings_pack::none
+		// 	&& m_settings.get_bool(settings_pack::proxy_peer_connections))
+		// 	return;
 
 		auto listen = std::find_if(m_listen_sockets.begin(), m_listen_sockets.end()
 			, [&listener](std::shared_ptr<listen_socket_t> const& l)
@@ -5515,8 +5515,8 @@ namespace {
 			// connections. Not even uTP connections via the port we know about.
 			// The DHT may use the implied port to make it work, but the port we
 			// announce here has no relevance for that.
-			if (sock->flags & listen_socket_t::proxy)
-				return 0;
+			// if (sock->flags & listen_socket_t::proxy)
+			// 	return 0;
 
 			if (!(sock->flags & listen_socket_t::accept_incoming))
 				return 0;
